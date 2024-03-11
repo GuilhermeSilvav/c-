@@ -1,0 +1,22 @@
+int potPin = A0; // Pino onde o potenciômetro está conectado
+int ledPin = 1;  // Pino onde o LED externo está conectado
+
+void setup()
+{
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop()
+{
+  int potValue = analogRead(potPin); // Lê o valor do potenciômetro (0 a 1023)
+  
+  // Mapeia o valor lido do potenciômetro para o intervalo de tempo desejado (80ms a 2000ms)
+  int intervalo = map(potValue, 0, 1023, 2000, 80); 
+  
+  digitalWrite(ledPin, HIGH); // Liga o LED
+  delay(intervalo); // Espera o tempo determinado pelo potenciômetro
+
+  digitalWrite(ledPin, LOW); // Desliga o LED
+  delay(intervalo); // Espera o tempo determinado pelo potenciômetro
+}
